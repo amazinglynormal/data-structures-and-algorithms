@@ -9,12 +9,13 @@ def reverseList(head):
     if head is None:
         return None
 
-    node = head
+    prev = None
+    curr = head
 
-    while node.next is not None:
-        new_head = node.next
-        node.next = node.next.next
-        new_head.next = head
-        head = new_head
+    while curr:
+        temp = curr.next
+        curr.next = prev
+        prev = curr
+        curr = temp
 
-    return head
+    return prev
